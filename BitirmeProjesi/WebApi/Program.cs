@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
 
 namespace WebApi
@@ -15,7 +14,7 @@ namespace WebApi
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-           // Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(config).CreateLogger();
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(config).CreateLogger();
             Log.Information("Application is starting.");
 
             CreateHostBuilder(args).Build().Run();
@@ -23,7 +22,7 @@ namespace WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-              //  .UseSerilog()
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
