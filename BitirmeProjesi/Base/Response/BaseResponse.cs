@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Base.Response
+namespace Base
 {
     public class BaseResponse<T>
     {

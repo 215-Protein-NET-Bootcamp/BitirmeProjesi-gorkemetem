@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace DataAccess.UnitOfWork
+namespace DataAccess
 {
     public class UnitOfWork : IUnitOfWork
     {

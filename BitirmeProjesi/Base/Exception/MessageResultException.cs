@@ -1,4 +1,6 @@
-﻿namespace Base.Exception
+﻿using System;
+
+namespace Base
 {
     public class MessageResultException : Exception
     {

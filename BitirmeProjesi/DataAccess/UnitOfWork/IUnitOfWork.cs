@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace DataAccess.UnitOfWork
+namespace DataAccess
 {
     public interface IUnitOfWork : IDisposable
     {
         Task CompleteAsync();
     }
+
+}
