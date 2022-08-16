@@ -19,7 +19,7 @@ namespace WebApi
                 .Build();
 
             // Initialize Logger
-            //Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(config).CreateLogger();
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(config).CreateLogger();
             Log.Information("Application is starting.");
 
 
@@ -29,8 +29,8 @@ namespace WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.UseSerilog
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .UseSerilog()
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
                     builder.RegisterModule(new AutofacBusinessModule());
