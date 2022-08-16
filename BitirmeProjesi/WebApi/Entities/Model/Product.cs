@@ -9,7 +9,7 @@
         public string Description { get; set; }
         public string Color { get; set; }
         public string Brand { get; set; }
-        public bool IsOfferable { get; set; }
-        public bool IsSold { get; set; }
+        public int IsOfferable { get; set; }
+        public int IsSold { get; set; }
     }
 }
