@@ -12,7 +12,7 @@ namespace WebApi
     public class CategoryController : BaseController<CategoryDto, Category>
     {
 
-        public CategoryController(ICategoryService EmployeeService, IMapper mapper) : base(EmployeeService, mapper)
+        public CategoryController(ICategoryService categoryService, IMapper mapper) : base(categoryService, mapper)
         {
 
         }

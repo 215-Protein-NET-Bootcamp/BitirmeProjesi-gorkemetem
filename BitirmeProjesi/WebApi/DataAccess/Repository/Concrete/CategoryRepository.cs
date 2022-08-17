@@ -1,4 +1,5 @@
 ﻿using Entities;
+using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -6,6 +7,11 @@ namespace DataAccess
     {
         public CategoryRepository(AppDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public override async Task<Category> GetByIdAsync(int id)
+        {
+            return await Context.Categories.FindAsync(id);
         }
     }
 }

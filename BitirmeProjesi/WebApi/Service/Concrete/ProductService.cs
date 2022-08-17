@@ -3,6 +3,7 @@ using Base;
 using DataAccess;
 using Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Service
@@ -13,6 +14,11 @@ namespace Service
         public ProductService(IProductRepository productRepository, IMapper mapper, IUnitOfWork unitOfWork) : base(productRepository, mapper, unitOfWork)
         {
             _repository = productRepository;
+        }
+
+        public Task<BaseResponse<IEnumerable<ProductDto>>> GetAllByCategoryIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         [ValidationAspect(typeof(ProductValidator))]

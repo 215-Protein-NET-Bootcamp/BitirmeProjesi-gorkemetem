@@ -11,11 +11,25 @@ namespace WebApi
     [ApiController]
     public class ProductController : BaseController<ProductDto, Product>
     {
-
-        public ProductController(IProductService EmployeeService, IMapper mapper) : base(EmployeeService, mapper)
+        IProductService _productService;
+        public ProductController(IProductService productService, IMapper mapper) : base(productService, mapper)
         {
-
+            _productService = productService;
         }
+
+        //[HttpGet("{id:int}")]
+        //public new async Task<IActionResult> GetAllByCategoryIdAsync(int id)
+        //{
+        //    var result = await _productService.GetAllByCategoryIdAsync(id);
+
+        //    if (!result.Success)
+        //        return BadRequest(result);
+
+        //    if (result.Response is null)
+        //        return NoContent();
+
+        //    return Ok(result);
+        //}
 
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
