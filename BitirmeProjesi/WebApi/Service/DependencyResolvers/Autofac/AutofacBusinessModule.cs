@@ -16,6 +16,12 @@ namespace Service
             builder.RegisterType<CategoryService>().As<ICategoryService>().SingleInstance();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
 
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<UserRepository>().As<IUserDal>();
+
+            builder.RegisterType<AuthService>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
