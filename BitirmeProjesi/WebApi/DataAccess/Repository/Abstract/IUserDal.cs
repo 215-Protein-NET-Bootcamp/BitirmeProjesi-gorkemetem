@@ -6,5 +6,6 @@ namespace DataAccess
     public interface IUserDal : IBaseRepository<User>
     {
         List<OperationClaim> GetClaims(User user);
+        void Add(User user);
     }
 }

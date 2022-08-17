@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,7 @@ namespace WebApi
             });
             services.AddSingleton(mapperConfig.CreateMapper());
 
+            services.AddSingleton<IHttpContextAccessor , HttpContextAccessor>();
 
             services.AddControllers();
 
@@ -56,6 +58,8 @@ namespace WebApi
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+
+            ServiceTool.Create(services);
 
 
             services.AddSwaggerGen(c =>

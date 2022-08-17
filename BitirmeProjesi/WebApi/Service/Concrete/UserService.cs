@@ -20,18 +20,15 @@ namespace Service
 
         public void Add(User user)
         {
-            _userDal.InsertAsync(user);
+            _userDal.Add(user);
         }
 
-        public User GetByMail(string mail)
+
+        public User GetByMail(string email)
         {
-            throw new System.NotImplementedException();
+            User user = null;
+            return user;
         }
-
-        //public User GetByMail(string email)
-        //{
-        //    //return _userDal.Get(u => u.Email == email);
-        //}
 
 
     }
