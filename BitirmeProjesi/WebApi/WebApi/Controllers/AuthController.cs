@@ -4,7 +4,7 @@ using Service;
 
 namespace WebApi
 {
-    [Route("api/[controller]")]
+    [Route("api/final/protein/[controller]")]
     [ApiController]
     public class AuthController : Controller
     {

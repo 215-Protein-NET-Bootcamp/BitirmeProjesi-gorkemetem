@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApi
 {
-    [Route("api/v1/protein/[controller]")]
+    [Route("api/final/protein/[controller]")]
     [ApiController]
     public class CategoryController : BaseController<CategoryDto, Category>
     {

@@ -26,8 +26,7 @@ namespace Service
 
         public User GetByMail(string email)
         {
-            User user = null;
-            return user;
+            return _userDal.Get(u => u.Email == email);
         }
 
 

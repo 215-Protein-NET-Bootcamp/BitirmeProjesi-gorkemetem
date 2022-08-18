@@ -21,7 +21,7 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        //[SecuredOperation("product.add, admin")]
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public override async Task<BaseResponse<ProductDto>> InsertAsync(ProductDto product)
         {

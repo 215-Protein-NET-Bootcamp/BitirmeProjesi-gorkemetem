@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Base;
 using Entities;
 
 namespace Service
@@ -10,7 +9,6 @@ namespace Service
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
-            CreateMap<User, UserForRegisterDto>().ReverseMap();
         }
 
     }

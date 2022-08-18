@@ -1,7 +1,9 @@
 ﻿using Base;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess
 {
@@ -28,6 +30,11 @@ namespace DataAccess
                 var addedEntity = db.Entry(user);
                 addedEntity.State = EntityState.Added;
                 db.SaveChanges();     
+        }
+
+        public User Get(Expression<Func<User, bool>> filter)
+        {        
+                return db.Set<User>().SingleOrDefault(filter);   
         }
     }
 }

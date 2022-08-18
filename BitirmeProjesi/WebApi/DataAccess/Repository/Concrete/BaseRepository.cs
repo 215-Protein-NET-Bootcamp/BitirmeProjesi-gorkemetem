@@ -23,7 +23,7 @@ namespace DataAccess
 
         public virtual async Task<Entity> GetByIdAsync(int entityId)
         {
-            return await entities.Where(entity => EF.Property<int>(entity, "id").Equals(entityId)).SingleOrDefaultAsync();
+            return await entities.Where(entity => EF.Property<int>(entity, "Id").Equals(entityId)).SingleOrDefaultAsync();
         }
 
         public async Task InsertAsync(Entity entity)

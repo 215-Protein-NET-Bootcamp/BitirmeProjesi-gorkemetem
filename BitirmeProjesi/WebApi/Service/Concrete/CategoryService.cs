@@ -15,6 +15,7 @@ namespace Service
             _repository = categoryRepository;   
         }
 
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
         {
