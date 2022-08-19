@@ -22,7 +22,7 @@ namespace Service
             this.UnitOfWork = unitOfWork;
         }
 
-
+        [CacheAspect]
         public virtual async Task<BaseResponse<IEnumerable<Dto>>> GetAllAsync()
         {
 
