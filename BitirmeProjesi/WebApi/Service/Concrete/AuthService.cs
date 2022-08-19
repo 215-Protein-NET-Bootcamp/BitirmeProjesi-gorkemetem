@@ -14,6 +14,7 @@ namespace Service
             _tokenHelper = tokenHelper;
         }
 
+        [ValidationAspect(typeof(RegisterUserValidator))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
@@ -31,6 +32,7 @@ namespace Service
             return new SuccessDataResult<User>(user, "Register");
         }
 
+        [ValidationAspect(typeof(LoginUserValidator))]
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
