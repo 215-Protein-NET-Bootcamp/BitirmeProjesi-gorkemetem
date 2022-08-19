@@ -21,8 +21,9 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        //[SecuredOperation("product.add, admin")]
+        [SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Insert")]
         public override async Task<BaseResponse<ProductDto>> InsertAsync(ProductDto product)
         {
             try
@@ -37,6 +38,29 @@ namespace Service
             catch (Exception ex)
             {
                 throw new MessageResultException("Saving_Error", ex);
+            }
+        }
+
+        [SecuredOperation("product.add, user")]
+        [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Update")]
+        public override async Task<BaseResponse<ProductDto>> UpdateAsync(int id, ProductDto updateResource)
+        {
+            try
+            {
+                var tempEntity = await _repository.GetByIdAsync(id);
+                if (tempEntity is null)
+                    return new BaseResponse<ProductDto>("NoData");
+                Mapper.Map(updateResource, tempEntity);
+
+                await UnitOfWork.CompleteAsync();
+                var resource = Mapper.Map<Product, ProductDto>(tempEntity);
+
+                return new BaseResponse<ProductDto>(resource);
+            }
+            catch (Exception ex)
+            {
+                throw new MessageResultException("Updating_Error", ex);
             }
         }
     }

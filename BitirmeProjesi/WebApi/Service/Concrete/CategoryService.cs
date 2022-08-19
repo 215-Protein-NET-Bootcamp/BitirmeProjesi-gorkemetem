@@ -17,6 +17,7 @@ namespace Service
 
         [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
+        [CacheRemoveAspect("ICategoryService.Insert")]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
         {
             try
@@ -31,6 +32,29 @@ namespace Service
             catch (Exception ex)
             {
                 throw new MessageResultException("Saving_Error", ex);
+            }
+        }
+
+        [SecuredOperation("product.add, admin")]
+        [ValidationAspect(typeof(CategoryValidator))]
+        [CacheRemoveAspect("ICategoryService.Update")]
+        public override async Task<BaseResponse<CategoryDto>> UpdateAsync(int id, CategoryDto updateResource)
+        {
+            try
+            {
+                var tempEntity = await _repository.GetByIdAsync(id);
+                if (tempEntity is null)
+                    return new BaseResponse<CategoryDto>("NoData");
+                Mapper.Map(updateResource, tempEntity);
+
+                await UnitOfWork.CompleteAsync();
+                var resource = Mapper.Map<Category, CategoryDto>(tempEntity);
+
+                return new BaseResponse<CategoryDto>(resource);
+            }
+            catch (Exception ex)
+            {
+                throw new MessageResultException("Updating_Error", ex);
             }
         }
     }

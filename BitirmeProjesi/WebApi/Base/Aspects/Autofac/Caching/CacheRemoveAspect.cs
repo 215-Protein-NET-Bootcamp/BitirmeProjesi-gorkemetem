@@ -1,7 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Base.Aspects.Autofac.Caching
+namespace Base
 {
     public class CacheRemoveAspect : MethodInterception
     {
