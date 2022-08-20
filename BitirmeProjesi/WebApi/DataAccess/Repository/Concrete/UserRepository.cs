@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess
 {
-    public class UserRepository : BaseRepository<User>, IUserDal
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         readonly AppDbContext db;
         public UserRepository(AppDbContext dbContext) : base(dbContext)

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess
 {
-    public interface IUserDal : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<User>
     {
         List<OperationClaim> GetClaims(User user);
         void Add(User user);

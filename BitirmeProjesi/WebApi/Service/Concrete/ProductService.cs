@@ -16,11 +16,7 @@ namespace Service
             _repository = productRepository;
         }
 
-        public Task<BaseResponse<IEnumerable<ProductDto>>> GetAllByCategoryIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         //[SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
         //[CacheRemoveAspect("IProductService.Insert")]

@@ -1,22 +1,52 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Entities;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using Service;
+using System.Threading.Tasks;
 
 namespace WebApi
 {
     [Route("api/final/protein/[controller]")]
     [ApiController]
-    public class OfferController
+    public class OfferController : BaseController<OfferDto, Offer>
     {
+        IProductService _productService;
+        IOfferService _offerService;
+        public OfferController(IOfferService offerService, IProductService productService, IMapper mapper) : base(offerService, mapper)
+        {
+            _productService = productService;
+            _offerService = offerService;
+        }
 
-        //[HttpGet("{ProductId:int}/{ProductId:int}")]
-        //public new async Task<IActionResult> GetByIdAsync(int id)
-        //{
-        //    Log.Information($"{User.Identity?.Name}: get a Employee with Id is {id}.");
+        [HttpPost]
+        public new async Task<IActionResult> CreateOfferAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int offerAmount, [FromQuery] int offerRate)
+        {
+            Log.Information($"{User.Identity?.Name}: create a Employee.");
 
-        //    return await base.GetByIdAsync(id);
-        //}
+            var productResult = await _productService.GetByIdAsync(productId);
+            if(productResult.Response.IsOfferable == 0)
+            {
+                return BadRequest("The product cannot be offered");
+            }
 
-        
+            OfferDto offer = new OfferDto { ProductId= productId, UserId= userId, OfferAmount= offerAmount };
+            var result = await _offerService.InsertAsync(offer);
 
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public virtual async Task<IActionResult> DeleteOfferAsync([FromQuery] int productId)
+        {
+            var offerResult =  _offerService.GetOfferByProductId(productId);
+            var result = await _offerService.RemoveAsync(offerResult.Data[0].Id);
+
+            if (result.Success)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
     }
 
 }

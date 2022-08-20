@@ -6,27 +6,27 @@ namespace Service
 {
     public class UserService : IUserService
     {
-        IUserDal _userDal;
+        IUserRepository _userRepository;
 
-        public UserService(IUserDal userDal)
+        public UserService(IUserRepository userRepository)
         {
-            _userDal = userDal;
+            _userRepository = userRepository;
         }
 
         public List<OperationClaim> GetClaims(User user)
         {
-            return _userDal.GetClaims(user);
+            return _userRepository.GetClaims(user);
         }
 
         public void Add(User user)
         {
-            _userDal.Add(user);
+            _userRepository.Add(user);
         }
 
 
         public User GetByMail(string email)
         {
-            return _userDal.Get(u => u.Email == email);
+            return _userRepository.Get(u => u.Email == email);
         }
 
 

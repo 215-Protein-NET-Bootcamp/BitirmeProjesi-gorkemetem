@@ -9,6 +9,7 @@ namespace Service
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Offer, OfferDto>().ReverseMap();
         }
 
     }

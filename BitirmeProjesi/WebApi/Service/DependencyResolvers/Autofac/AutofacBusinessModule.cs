@@ -14,10 +14,12 @@ namespace Service
             builder.RegisterType<ProductService>().As<IProductService>().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().SingleInstance();
             builder.RegisterType<CategoryService>().As<ICategoryService>().SingleInstance();
+            builder.RegisterType<OfferRepository>().As<IOfferRepository>().SingleInstance();
+            builder.RegisterType<OfferService>().As<IOfferService>().SingleInstance();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
 
             builder.RegisterType<UserService>().As<IUserService>();
-            builder.RegisterType<UserRepository>().As<IUserDal>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>();
 
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();

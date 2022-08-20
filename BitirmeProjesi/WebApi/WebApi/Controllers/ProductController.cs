@@ -17,20 +17,6 @@ namespace WebApi
             _productService = productService;
         }
 
-        //[HttpGet("{id:int}")]
-        //public new async Task<IActionResult> GetAllByCategoryIdAsync(int id)
-        //{
-        //    var result = await _productService.GetAllByCategoryIdAsync(id);
-
-        //    if (!result.Success)
-        //        return BadRequest(result);
-
-        //    if (result.Response is null)
-        //        return NoContent();
-
-        //    return Ok(result);
-        //}
-
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
         {
@@ -67,6 +53,17 @@ namespace WebApi
             return await base.UpdateAsync(id, resource);
         }
 
+        [HttpPut]
+        public new async Task<IActionResult> BuyProductAsync([FromQuery] int productId)
+        {
+            //Log.Information($"{User.Identity?.Name}: update a Department with Id is {id}.");
+            var productResult = await _productService.GetByIdAsync(productId);
+            productResult.Response.IsSold = 1;
+            productResult.Response.IsOfferable = 0;
+            var result = await _productService.UpdateAsync(productId, productResult.Response);
+
+            return Ok("Product sold.");
+        }
 
         [HttpDelete("{id:int}")]
         public new async Task<IActionResult> DeleteAsync(int id)
