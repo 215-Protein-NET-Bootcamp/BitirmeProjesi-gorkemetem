@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Service
 {
-    internal class CategoryValidator : AbstractValidator<CategoryDto>
+    public class CategoryValidator : AbstractValidator<CategoryDto>
     {
         public CategoryValidator()
         {
