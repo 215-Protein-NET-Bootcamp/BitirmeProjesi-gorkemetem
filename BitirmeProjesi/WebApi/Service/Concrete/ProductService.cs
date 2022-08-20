@@ -21,9 +21,9 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("product.add, user")]
+        //[SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Insert")]
+        //[CacheRemoveAspect("IProductService.Insert")]
         public override async Task<BaseResponse<ProductDto>> InsertAsync(ProductDto product)
         {
             try
@@ -41,9 +41,9 @@ namespace Service
             }
         }
 
-        [SecuredOperation("product.add, user")]
+        //[SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Update")]
+        //[CacheRemoveAspect("IProductService.Update")]
         public override async Task<BaseResponse<ProductDto>> UpdateAsync(int id, ProductDto updateResource)
         {
             try
@@ -62,6 +62,11 @@ namespace Service
             {
                 throw new MessageResultException("Updating_Error", ex);
             }
+        }
+
+        public IDataResult<List<Product>> GetProductsByCategoryId(int id)
+        {
+            return new SuccessDataResult<List<Product>>(_repository.GetAll(p => p.CategoryId == id));
         }
     }
 }

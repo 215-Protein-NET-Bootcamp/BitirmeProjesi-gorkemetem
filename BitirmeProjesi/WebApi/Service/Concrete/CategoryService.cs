@@ -15,9 +15,9 @@ namespace Service
             _repository = categoryRepository;   
         }
 
-        [SecuredOperation("product.add, admin")]
+        //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        [CacheRemoveAspect("ICategoryService.Insert")]
+        //[CacheRemoveAspect("ICategoryService.Insert")]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
         {
             try
@@ -35,9 +35,9 @@ namespace Service
             }
         }
 
-        [SecuredOperation("product.add, admin")]
+        //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        [CacheRemoveAspect("ICategoryService.Update")]
+        //[CacheRemoveAspect("ICategoryService.Update")]
         public override async Task<BaseResponse<CategoryDto>> UpdateAsync(int id, CategoryDto updateResource)
         {
             try

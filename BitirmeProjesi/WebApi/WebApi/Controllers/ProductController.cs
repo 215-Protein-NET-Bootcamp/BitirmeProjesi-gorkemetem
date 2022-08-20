@@ -39,6 +39,18 @@ namespace WebApi
             return await base.GetByIdAsync(id);
         }
 
+        [Route("GetByCategoryId")]
+        [HttpGet]
+        public IActionResult GetByCategoryId(int categoryId)
+        {
+            var result = _productService.GetProductsByCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost]
         public new async Task<IActionResult> CreateAsync([FromBody] ProductDto resource)
         {
