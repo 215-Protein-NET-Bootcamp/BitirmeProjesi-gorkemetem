@@ -63,7 +63,7 @@ namespace WebApi
             productResult.Response.IsOfferable = 0;
             var result = await _productService.UpdateAsync(productId, productResult.Response);
 
-            return Ok("Product sold.");
+            return Ok(result);
         }
 
         [HttpDelete("{id:int}")]
