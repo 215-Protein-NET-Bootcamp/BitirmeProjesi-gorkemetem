@@ -23,7 +23,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        //[CacheAspect]
+        [CacheAspect]
         public virtual async Task<BaseResponse<IEnumerable<Dto>>> GetAllAsync()
         {
 
@@ -34,7 +34,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        //[CacheAspect]
+        [CacheAspect]
         public virtual async Task<BaseResponse<Dto>> GetByIdAsync(int id)
         {
             var tempEntity = await baseRepository.GetByIdAsync(id);
@@ -44,7 +44,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        //[CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IProductService.Update")]
         public virtual async Task<BaseResponse<Dto>> InsertAsync(Dto insertResource)
         {
             try
@@ -63,7 +63,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        //[CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IProductService.Update")]
         public virtual async Task<BaseResponse<Dto>> RemoveAsync(int id)
         {
             try
@@ -84,7 +84,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        //[CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IProductService.Update")]
         public virtual async Task<BaseResponse<Dto>> UpdateAsync(int id, Dto updateResource)
         {
             try

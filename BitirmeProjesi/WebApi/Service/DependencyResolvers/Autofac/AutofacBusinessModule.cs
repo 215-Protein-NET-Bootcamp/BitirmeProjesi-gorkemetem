@@ -26,6 +26,7 @@ namespace Service
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
+            //Checking if there is any aspect for all classes
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {

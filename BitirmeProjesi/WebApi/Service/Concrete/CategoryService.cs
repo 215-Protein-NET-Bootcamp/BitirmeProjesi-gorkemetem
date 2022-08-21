@@ -37,7 +37,7 @@ namespace Service
 
         //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        //[CacheRemoveAspect("ICategoryService.Update")]
+        [CacheRemoveAspect("ICategoryService.Update")]
         public override async Task<BaseResponse<CategoryDto>> UpdateAsync(int id, CategoryDto updateResource)
         {
             try

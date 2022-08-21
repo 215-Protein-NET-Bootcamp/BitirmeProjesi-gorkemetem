@@ -29,7 +29,7 @@ namespace Test
         {
             List<OperationClaim> operationClaims = new List<OperationClaim>();
             operationClaims.Add(_claim);
-            JwtHelper.CreateToken(_user, operationClaims);
+            //JwtHelper.CreateToken(_user, operationClaims);
         }
     }
 }

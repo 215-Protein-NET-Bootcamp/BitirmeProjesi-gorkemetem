@@ -12,7 +12,6 @@ namespace WebApi
     {
         public static void Main(string[] args)
         {
-
             // Read Configuration from appSettings
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -31,7 +30,7 @@ namespace WebApi
                 .UseSerilog()
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
-                    builder.RegisterModule(new AutofacBusinessModule());
+                    builder.RegisterModule(new AutofacBusinessModule()); // for use new IoC container
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

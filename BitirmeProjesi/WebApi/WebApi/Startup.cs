@@ -30,10 +30,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //SqlServer
             var dbConfig = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(dbConfig));
 
-
+            //Mapper
             var mapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
@@ -46,6 +47,7 @@ namespace WebApi
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
+            //JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -61,7 +63,10 @@ namespace WebApi
                     };
                 });
 
-            ServiceTool.Create(services);
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
+            });
 
 
             services.AddSwaggerGen(c =>

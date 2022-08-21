@@ -13,7 +13,7 @@ namespace Test
         [Test]
         public static void Offer()
         {
-            OfferController.DeleteOfferAsync(productId);
+            //OfferController.DeleteOfferAsync(productId);
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Service
 {
+    //for JWT
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;
@@ -20,6 +21,7 @@ namespace Service
 
         protected override void OnBefore(IInvocation invocation)
         {
+            //Authorization check
             var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
             foreach (var role in _roles)
             {
