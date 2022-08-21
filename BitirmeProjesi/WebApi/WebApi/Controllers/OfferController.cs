@@ -19,8 +19,9 @@ namespace WebApi
             _offerService = offerService;
         }
 
+        [Route("Offer")]
         [HttpPost]
-        public new async Task<IActionResult> CreateOfferAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int offerAmount, [FromQuery] int offerRate)
+        public new async Task<IActionResult> CreateOfferAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int offerAmount)
         {
             Log.Information($"{User.Identity?.Name}: create a Employee.");
 
@@ -31,6 +32,26 @@ namespace WebApi
             }
 
             OfferDto offer = new OfferDto { ProductId= productId, UserId= userId, OfferAmount= offerAmount };
+            var result = await _offerService.InsertAsync(offer);
+
+            return Ok(result);
+        }
+
+        [Route("PercentageOffer")]
+        [HttpPost]
+        public new async Task<IActionResult> CreateOfferWithPercentageAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int percentageAmount)
+        {
+            Log.Information($"{User.Identity?.Name}: create a Employee.");
+
+            var productResult = await _productService.GetByIdAsync(productId);
+            if (productResult.Response.IsOfferable == 0)
+            {
+                return BadRequest("The product cannot be offered");
+            }
+
+            var offerAmount = (productResult.Response.Price * percentageAmount) / 100;
+
+            OfferDto offer = new OfferDto { ProductId = productId, UserId = userId, OfferAmount = offerAmount };
             var result = await _offerService.InsertAsync(offer);
 
             return Ok(result);

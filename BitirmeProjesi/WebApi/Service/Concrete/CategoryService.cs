@@ -17,7 +17,7 @@ namespace Service
 
         //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        //[CacheRemoveAspect("ICategoryService.Insert")]
+        [CacheRemoveAspect("ICategoryService.Insert")]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
         {
             try

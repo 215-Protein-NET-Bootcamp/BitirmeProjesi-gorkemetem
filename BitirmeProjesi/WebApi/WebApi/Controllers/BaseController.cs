@@ -14,8 +14,8 @@ namespace WebApi
 
         public BaseController(IBaseService<Dto, Entity> baseService, IMapper mapper)
         {
-            this._baseService = baseService;
-            this.Mapper = mapper;
+            _baseService = baseService;
+            Mapper = mapper;
         }
 
         [Route("GetAll")]
