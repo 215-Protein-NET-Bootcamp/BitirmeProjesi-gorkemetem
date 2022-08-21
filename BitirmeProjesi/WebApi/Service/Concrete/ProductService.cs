@@ -17,7 +17,7 @@ namespace Service
         }
 
  
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin,user,product.add")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         [PerformanceAspect(5)]
@@ -38,7 +38,7 @@ namespace Service
             }
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin,product.add,user")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public override async Task<BaseResponse<ProductDto>> UpdateAsync(int id, ProductDto updateResource)
@@ -61,6 +61,7 @@ namespace Service
             }
         }
 
+        [SecuredOperation("admin,product.add,user")]
         [CacheAspect]
         public IDataResult<List<Product>> GetProductsByCategoryId(int id)
         {

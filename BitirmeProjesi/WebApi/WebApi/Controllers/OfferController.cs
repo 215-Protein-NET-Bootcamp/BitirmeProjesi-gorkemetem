@@ -68,6 +68,18 @@ namespace WebApi
 
             return BadRequest(result);
         }
+
+        [Route("GetByUserId")]
+        [HttpGet]
+        public IActionResult GetByUserId(int userId)
+        {
+            var result = _offerService.GetOffersByUserId(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 
 }

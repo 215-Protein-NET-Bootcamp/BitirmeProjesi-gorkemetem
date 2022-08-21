@@ -53,6 +53,7 @@ namespace WebApi
             return await base.UpdateAsync(id, resource);
         }
 
+        [Route("Buy")]
         [HttpPut]
         public new async Task<IActionResult> BuyProductAsync([FromQuery] int productId)
         {

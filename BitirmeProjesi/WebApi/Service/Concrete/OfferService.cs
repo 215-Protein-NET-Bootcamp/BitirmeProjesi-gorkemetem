@@ -18,10 +18,17 @@ namespace Service
 
         public IDataResult<List<Offer>> GetOfferByProductId(int id)
         {
-            return new SuccessDataResult<List<Offer>>(_offerRepository.GetOfferByProductId(o => o.ProductId == id));
+            return new SuccessDataResult<List<Offer>>(_offerRepository.GetOfferById(o => o.ProductId == id));
         }
 
+        public IDataResult<List<Offer>> GetOffersByUserId(int id)
+        {
+            return new SuccessDataResult<List<Offer>>(_offerRepository.GetOfferById(o => o.UserId == id));
+        }
+
+        [SecuredOperation("admin,user")]
         [ValidationAspect(typeof(OfferValidator))]
+        [CacheRemoveAspect("IOfferService.Get")]
         public override async Task<BaseResponse<OfferDto>> InsertAsync(OfferDto insertOffer)
         {
             try
@@ -39,7 +46,9 @@ namespace Service
             }
         }
 
+        [SecuredOperation("admin,user")]
         [ValidationAspect(typeof(OfferValidator))]
+        [CacheRemoveAspect("IOfferService.Get")]
         public override async Task<BaseResponse<OfferDto>> UpdateAsync(int id, OfferDto updateOffer)
         {
             try

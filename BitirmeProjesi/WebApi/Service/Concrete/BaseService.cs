@@ -22,7 +22,7 @@ namespace Service
             this.UnitOfWork = unitOfWork;
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin, user")]
         [CacheAspect]
         public virtual async Task<BaseResponse<IEnumerable<Dto>>> GetAllAsync()
         {
@@ -33,7 +33,7 @@ namespace Service
             return new BaseResponse<IEnumerable<Dto>>(result);
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin,user")]
         [CacheAspect]
         public virtual async Task<BaseResponse<Dto>> GetByIdAsync(int id)
         {
@@ -43,7 +43,7 @@ namespace Service
             return new BaseResponse<Dto>(result);
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin,product.add")]
         [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> InsertAsync(Dto insertResource)
         {
@@ -62,7 +62,7 @@ namespace Service
             }
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin")]
         [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> RemoveAsync(int id)
         {
@@ -83,7 +83,7 @@ namespace Service
             }
         }
 
-        //[SecuredOperation("product.add, user")]
+        [SecuredOperation("admin,user,product.add")]
         [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> UpdateAsync(int id, Dto updateResource)
         {

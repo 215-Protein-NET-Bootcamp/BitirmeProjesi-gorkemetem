@@ -12,7 +12,7 @@ namespace DataAccess
         {
         }
 
-        public List<Offer> GetOfferByProductId(Expression<Func<Offer, bool>> filter = null)
+        public List<Offer> GetOfferById(Expression<Func<Offer, bool>> filter = null)
         {
             return filter == null ?
                  Context.Set<Offer>().ToList() :

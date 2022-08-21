@@ -15,7 +15,7 @@ namespace Service
             _repository = categoryRepository;   
         }
 
-        //[SecuredOperation("product.add, admin")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
@@ -35,7 +35,7 @@ namespace Service
             }
         }
 
-        //[SecuredOperation("product.add, admin")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CategoryValidator))]
         [CacheRemoveAspect("ICategoryService.Get")]
         public override async Task<BaseResponse<CategoryDto>> UpdateAsync(int id, CategoryDto updateResource)
