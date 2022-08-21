@@ -35,7 +35,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Saving_Error", ex);
+                throw new MessageResultException("Offer_Saving_Error", ex);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Updating_Error", ex);
+                throw new MessageResultException("Offer_Updating_Error", ex);
             }
         }
 

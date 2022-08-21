@@ -23,12 +23,9 @@ namespace Service
             _userRepository.Add(user);
         }
 
-
         public User GetByMail(string email)
         {
             return _userRepository.Get(u => u.Email == email);
         }
-
-
     }
 }

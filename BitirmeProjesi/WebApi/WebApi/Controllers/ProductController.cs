@@ -20,7 +20,7 @@ namespace WebApi
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: get a Employee with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: get a Product with Id is {id}.");
 
             return await base.GetByIdAsync(id);
         }
@@ -40,7 +40,7 @@ namespace WebApi
         [HttpPost]
         public new async Task<IActionResult> CreateAsync([FromBody] ProductDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: create a Employee.");
+            Log.Information($"{User.Identity?.Name}: create a Product.");
 
             return await base.CreateAsync(resource);
         }
@@ -48,7 +48,7 @@ namespace WebApi
         [HttpPut("{id:int}")]
         public new async Task<IActionResult> UpdateAsync(int id, [FromBody] ProductDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: update a Department with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: update a Product with Id is {id}.");
 
             return await base.UpdateAsync(id, resource);
         }
@@ -56,7 +56,7 @@ namespace WebApi
         [HttpPut]
         public new async Task<IActionResult> BuyProductAsync([FromQuery] int productId)
         {
-            //Log.Information($"{User.Identity?.Name}: update a Department with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: update a Product with Id is {productId}.");
             var productResult = await _productService.GetByIdAsync(productId);
             productResult.Response.IsSold = 1;
             productResult.Response.IsOfferable = 0;
@@ -68,7 +68,7 @@ namespace WebApi
         [HttpDelete("{id:int}")]
         public new async Task<IActionResult> DeleteAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: delete a Department with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: delete a Product with Id is {id}.");
 
             return await base.DeleteAsync(id);
         }

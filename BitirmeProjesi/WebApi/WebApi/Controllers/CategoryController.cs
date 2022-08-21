@@ -20,7 +20,7 @@ namespace WebApi
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: get a Employee with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: get a Category with Id is {id}.");
 
             return await base.GetByIdAsync(id);
         }
@@ -28,7 +28,7 @@ namespace WebApi
         [HttpPost]
         public new async Task<IActionResult> CreateAsync([FromBody] CategoryDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: create a Employee.");
+            Log.Information($"{User.Identity?.Name}: create a Category.");
 
             return await base.CreateAsync(resource);
         }
@@ -36,7 +36,7 @@ namespace WebApi
         [HttpPut("{id:int}")]
         public new async Task<IActionResult> UpdateAsync(int id, [FromBody] CategoryDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: update a Department with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: update a Category with Id is {id}.");
 
             return await base.UpdateAsync(id, resource);
         }
@@ -45,7 +45,7 @@ namespace WebApi
         [HttpDelete("{id:int}")]
         public new async Task<IActionResult> DeleteAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: delete a Department with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: delete a Category with Id is {id}.");
 
             return await base.DeleteAsync(id);
         }

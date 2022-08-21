@@ -44,7 +44,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        [CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> InsertAsync(Dto insertResource)
         {
             try
@@ -63,7 +63,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        [CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> RemoveAsync(int id)
         {
             try
@@ -84,7 +84,7 @@ namespace Service
         }
 
         //[SecuredOperation("product.add, user")]
-        [CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IBaseService.Get")]
         public virtual async Task<BaseResponse<Dto>> UpdateAsync(int id, Dto updateResource)
         {
             try
@@ -104,9 +104,5 @@ namespace Service
                 throw new MessageResultException("Updating_Error", ex);
             }
         }
-
-
-
-
     }
 }

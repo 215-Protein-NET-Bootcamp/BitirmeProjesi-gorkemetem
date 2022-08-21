@@ -21,9 +21,6 @@ namespace Test
             Name = "user"
         };
 
-        
-
-
         [Test]
         public void CreateToken()
         {

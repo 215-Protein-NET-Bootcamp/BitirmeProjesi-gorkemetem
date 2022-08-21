@@ -23,7 +23,7 @@ namespace WebApi
         [HttpPost]
         public new async Task<IActionResult> CreateOfferAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int offerAmount)
         {
-            Log.Information($"{User.Identity?.Name}: create a Employee.");
+            Log.Information($"{User.Identity?.Name}: create a Offer.");
 
             var productResult = await _productService.GetByIdAsync(productId);
             if(productResult.Response.IsOfferable == 0)
@@ -41,7 +41,7 @@ namespace WebApi
         [HttpPost]
         public new async Task<IActionResult> CreateOfferWithPercentageAsync([FromQuery] int userId, [FromQuery] int productId, [FromQuery] int percentageAmount)
         {
-            Log.Information($"{User.Identity?.Name}: create a Employee.");
+            Log.Information($"{User.Identity?.Name}: create a Offer.");
 
             var productResult = await _productService.GetByIdAsync(productId);
             if (productResult.Response.IsOfferable == 0)

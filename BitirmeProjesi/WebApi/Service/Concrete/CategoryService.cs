@@ -17,7 +17,7 @@ namespace Service
 
         //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        [CacheRemoveAspect("ICategoryService.Insert")]
+        [CacheRemoveAspect("ICategoryService.Get")]
         public override async Task<BaseResponse<CategoryDto>> InsertAsync(CategoryDto product)
         {
             try
@@ -31,13 +31,13 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Saving_Error", ex);
+                throw new MessageResultException("Category_Saving_Error", ex);
             }
         }
 
         //[SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(CategoryValidator))]
-        [CacheRemoveAspect("ICategoryService.Update")]
+        [CacheRemoveAspect("ICategoryService.Get")]
         public override async Task<BaseResponse<CategoryDto>> UpdateAsync(int id, CategoryDto updateResource)
         {
             try
@@ -54,7 +54,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Updating_Error", ex);
+                throw new MessageResultException("Category_Updating_Error", ex);
             }
         }
     }

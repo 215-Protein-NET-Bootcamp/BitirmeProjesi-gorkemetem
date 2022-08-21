@@ -19,7 +19,8 @@ namespace Service
  
         //[SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Insert")]
+        [CacheRemoveAspect("IProductService.Get")]
+        [PerformanceAspect(5)]
         public override async Task<BaseResponse<ProductDto>> InsertAsync(ProductDto product)
         {
             try
@@ -33,13 +34,13 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Saving_Error", ex);
+                throw new MessageResultException("Product_Saving_Error", ex);
             }
         }
 
         //[SecuredOperation("product.add, user")]
         [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Update")]
+        [CacheRemoveAspect("IProductService.Get")]
         public override async Task<BaseResponse<ProductDto>> UpdateAsync(int id, ProductDto updateResource)
         {
             try
@@ -56,7 +57,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Updating_Error", ex);
+                throw new MessageResultException("Product_Updating_Error", ex);
             }
         }
 
