@@ -4,8 +4,11 @@ Bu proje kullanıcıların register ve login olabildiği, ürünlere teklif vere
 Projede rolle yetkilendirme kullandım. Bu yetkileri database tarafında kendim verdim. Methodların üzerinde bulunan
 attribute'lar ile kullanıcıların yetkilerini kontrol ettim.
 
+Users table:
 ![swagger](ScreenShots/UsersInDatabase.PNG)
-![swagger](ScreenShots/UserOperationClaims.PNG)
+UserOperationClaims table:  
+![swagger](ScreenShots/UserOperationClaims.PNG)  
+OperationClaims table:  
 ![swagger](ScreenShots/OperationClaim2.PNG)
 
 Cache ve validation işlemlerini aspect oriented programming ile gerçekleştirdim.
