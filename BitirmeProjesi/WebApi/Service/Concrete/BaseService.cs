@@ -23,7 +23,7 @@ namespace Service
         }
 
         [SecuredOperation("admin, user")]
-        [CacheAspect]
+        //[CacheAspect]
         public virtual async Task<BaseResponse<IEnumerable<Dto>>> GetAllAsync()
         {
 
