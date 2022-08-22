@@ -5,7 +5,7 @@ Projede rolle yetkilendirme kullandım. Bu yetkileri database tarafında kendim 
 attribute'lar ile kullanıcıların yetkilerini kontrol ettim.
 
 ![swagger](ScreenShots/UsersInDatabase.PNG)
-![swagger](ScreenShots/OperationClaim.PNG)
+![swagger](ScreenShots/UserOperationClaims.PNG)
 ![swagger](ScreenShots/OperationClaim2.PNG)
 
 Cache ve validation işlemlerini aspect oriented programming ile gerçekleştirdim.
